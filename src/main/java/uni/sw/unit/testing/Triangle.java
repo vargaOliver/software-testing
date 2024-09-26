@@ -20,7 +20,7 @@ public class Triangle {
     }
 
     public boolean isEquilateral(){
-        throw new UnsupportedOperationException("This function is not yet implemented");
+        return ((a == b) && (b == c)) ? true : false;
     }
 
     public boolean isRightAngeled(){
