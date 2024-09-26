@@ -1,10 +1,12 @@
 package uni.sw.unit.testing;
 
+import java.lang.Math;
+
 public class Triangle {
     private int a, b, c;
 
     public Triangle (int a, int b, int c){
-        if ( ((a + b) > c ) && ((b + c) > a )){
+        if ( ((a + b) > c ) && ((b + c) > a ) && ((a + c) > b )){
             this.a = a;
             this.b = b;
             this.c = c;    
@@ -16,7 +18,7 @@ public class Triangle {
     }
 
     public boolean isIsosceles(){
-        return ((a == b) || (b == c)) ? true : false;
+        return ((a == b) || (b == c) || (a == c)) ? true : false;
     }
 
     public boolean isEquilateral(){
@@ -24,7 +26,7 @@ public class Triangle {
     }
 
     public boolean isRightAngeled(){
-        throw new UnsupportedOperationException("This function is not yet implemented"); 
+        return (Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)) || (Math.pow(a, 2) + Math.pow(c, 2) == Math.pow(b, 2)) || (Math.pow(c, 2) + Math.pow(b, 2) == Math.pow(a, 2)) ? true : false;
     }
 
     public int getPerimeter(){
@@ -32,6 +34,8 @@ public class Triangle {
     }
 
     public double getArea(){
-        throw new UnsupportedOperationException("This function is not yet implemented");
+        double s = this.getPerimeter() / 2;
+
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
     }
 }
